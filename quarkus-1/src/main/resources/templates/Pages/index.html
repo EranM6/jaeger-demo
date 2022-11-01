@@ -1,0 +1,20 @@
+{#include layouts/pageWrapper}
+    {#title}Home{/title}
+    <section class="pf-c-page__main-section pf-m-limit-width pf-m-align-center">
+          <div class="pf-c-page__main-body">
+            {#include components/search id="userSearch" switch=true}
+                {#headers}
+                    <div class="pf-l-grid__item pf-m-3-col">מס' משתמש</div>
+                    <div class="pf-l-grid__item pf-m-3-col">שם פרטי</div>
+                    <div class="pf-l-grid__item pf-m-3-col">שם משפחה</div>
+                    <div class="pf-l-grid__item pf-m-3-col">דוא"ל</div>
+                {/headers}
+                {#results}
+                    {#include components/userInfo /}
+                {/results}
+            {/include}
+            {#include components/addItem type="user" /}
+        </div>
+    </section>
+        <script type="module" src="js/home.js"></script>
+{/include}

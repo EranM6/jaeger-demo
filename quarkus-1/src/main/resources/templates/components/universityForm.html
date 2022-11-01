@@ -1,0 +1,236 @@
+<div id="universityForm" class="pf-c-backdrop" hidden>
+    <div class="pf-l-bullseye">
+        <div
+                class="pf-c-modal-box pf-m-md"
+                aria-modal="true"
+                aria-labelledby="modal-title-"
+                aria-describedby="modal-description-"
+        >
+            <header
+                    class="pf-c-modal-box__header"
+                    style="
+                        margin-left: var(--pf-c-modal-box--c-button--sibling--MarginRight);
+                        margin-right: 0;
+                        text-align: start;
+                    "
+            >
+                <h1 class="pf-c-modal-box__title" id="modal-title-"></h1>
+            </header>
+            <button
+                    id="closeFormModal"
+                    class="pf-c-button pf-m-plain"
+                    type="button"
+                    aria-label="Close dialog"
+                    style="left: var(--pf-c-modal-box--c-button--Right);right: calc(90% - var(--pf-c-modal-box--c-button--Right));"
+            >
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="pf-c-modal-box__body">
+                {#let canEdit?=true}
+                    <form novalidate class="pf-c-form" style="text-align: start">
+                        <div class="pf-l-grid pf-m-all-4-col-on-md pf-m-gutter">
+                            <div class="pf-c-form__group">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-id">
+                                        <span class="pf-c-form__label-text">מס' ארגון</span>
+                                        <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <input
+                                            class="pf-c-form-control"
+                                            type="text"
+                                            id="-form-id"
+                                            name="-form-id"
+                                            required
+                                    />
+                                    <p class="pf-c-form__helper-text pf-m-error" id="form-help-text-name" aria-live="polite"></p>
+                                </div>
+                            </div>
+                            <div class="pf-c-form__group">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-name">
+                                        <span class="pf-c-form__label-text">שם ארגון</span>
+                                        <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <input
+                                            class="pf-c-form-control"
+                                            type="text"
+                                            id="-form-name"
+                                            name="-form-name"
+                                            required
+                                            {#if !canEdit}disabled{/if}
+                                    />
+                                    <p class="pf-c-form__helper-text pf-m-error" id="form-help-text-name" aria-live="polite"></p>
+                                </div>
+                            </div>
+                            <div class="pf-c-form__group">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-display-name">
+                                        <span class="pf-c-form__label-text">שם לתצוגה</span>
+                                        <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <input
+                                            class="pf-c-form-control"
+                                            type="text"
+                                            id="-form-display-name"
+                                            name="-form-display-name"
+                                            required
+                                    />
+                                    <p class="pf-c-form__helper-text pf-m-error" id="form-help-text-displayName" aria-live="polite"></p>
+                                </div>
+                            </div>
+                            <div class="pf-c-form__group pf-m-12-col">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-description">
+                                        <span class="pf-c-form__label-text">תיאור</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <textarea
+                                            class="pf-c-form-control"
+                                            id="-form-description"
+                                            name="-form-description"
+                    {#if !canEdit}disabled{/if}
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="pf-c-divider"/>
+                        <div class="pf-l-grid pf-m-all-4-col-on-md pf-m-gutter">
+                            <div class="pf-c-form__group">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-contact-name">
+                                        <span class="pf-c-form__label-text">שם</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <input
+                                            class="pf-c-form-control"
+                                            type="text"
+                                            id="-form-contact-name"
+                                            name="-form-contact-name"
+                    {#if !canEdit}disabled{/if}
+                                    />
+                                </div>
+                            </div>
+                            <div class="pf-c-form__group">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-contact-email">
+                                        <span class="pf-c-form__label-text">דוא"ל</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <input
+                                            class="pf-c-form-control"
+                                            type="text"
+                                            id="-form-contact-email"
+                                            name="-form-contact-email"
+                    {#if !canEdit}disabled{/if}
+                                    />
+                                </div>
+                            </div>
+                            <div class="pf-c-form__group">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-contact-phone">
+                                        <span class="pf-c-form__label-text">טלפון</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <input
+                                            class="pf-c-form-control"
+                                            type="text"
+                                            id="-form-contact-phone"
+                                            name="-form-contact-phone"
+                    {#if !canEdit}disabled{/if}
+                                    />
+                                </div>
+                            </div>
+                            <div class="pf-c-form__group pf-m-12-col">
+                                <div class="pf-c-form__group-label">
+                                    <label class="pf-c-form__label" for="-form-contact-description">
+                                        <span class="pf-c-form__label-text">תיאור</span>
+                                    </label>
+                                </div>
+                                <div class="pf-c-form__group-control">
+                                    <textarea
+                                            class="pf-c-form-control"
+                                            id="-form-contact-description"
+                                            name="-form-contact-description"
+                    {#if !canEdit}disabled{/if}
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="pf-c-divider"/>
+                        <div class="pf-c-form__group">
+                            <div class="pf-c-form__group-label">
+                                <span class="pf-c-form__label">
+                                    <span class="pf-c-form__label-text">אתרים</span>
+                                </span>
+                            </div>
+                            <div class="pf-c-form__group-control">
+                                <div class="pf-l-grid pf-m-all-4-col-on-md pf-m-gutter">
+                                <div class="pf-c-check">
+                                    <input
+                                            class="pf-c-check__input"
+                                            type="checkbox"
+                                            id="-form-htz-checkbox"
+                                            name="-form-htz-checkbox"
+                                    />
+                                    <label class="pf-c-check__label" for="-form-htz-checkbox">הארץ</label>
+                                </div>
+                                <div class="pf-c-check">
+                                    <input
+                                            class="pf-c-check__input"
+                                            type="checkbox"
+                                            id="-form-tm-checkbox"
+                                            name="-form-tm-checkbox"
+                                    />
+                                    <label class="pf-c-check__label" for="-form-tm-checkbox">TheMarker</label>
+                                </div>
+                                <div class="pf-c-check">
+                                    <input
+                                            class="pf-c-check__input"
+                                            type="checkbox"
+                                            id="-form-hdc-checkbox"
+                                            name="-form-hdc-checkbox"
+                                    />
+                                    <label class="pf-c-check__label" for="-form-hdc-checkbox">Haaretz.com</label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="-form-ranges-wrapper" class="pf-c-form__group">
+                            <div class="pf-c-form__group-label">
+                                <span class="pf-c-form__label">
+                                    <span class="pf-c-form__label-text">טווחים</span>
+                                    <button id="addRangeField" class="pf-c-button pf-m-link" type="button" {#if !canEdit}disabled{/if}>
+                                      <span class="pf-c-button__icon {!pf-m-start!}">
+                                        <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                                      </span>
+                                    </button>
+                                </span>
+                            </div>
+                            <div id="-form-ranges-list" class="pf-l-grid pf-m-all-4-col-on-md pf-m-gutter"></div>
+                        </div>
+                    </form>
+                {/let}
+            </div>
+            <footer class="pf-c-modal-box__footer">
+                <button
+                        id="updateUniversity"
+                        class="pf-c-button pf-m-primary"
+                        type="button"
+                        form="-form"
+                        style="margin-right: auto"
+                >שמור שינויים
+                </button>
+            </footer>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div id="apiModal" class="pf-c-backdrop" hidden>
+    <div class="pf-l-bullseye">
+        <div
+                class="pf-c-modal-box pf-m-sm"
+                aria-modal="true"
+                aria-labelledby="modal-title-"
+                aria-describedby="modal-description-"
+        >
+            <button
+                    id="closeErrorModal"
+                    class="pf-c-button pf-m-plain"
+                    type="button"
+                    aria-label="Close"
+                    style="left: var(--pf-c-modal-box--c-button--Right);right: calc(90% - var(--pf-c-modal-box--c-button--Right));"
+            >
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <header
+                    class="pf-c-modal-box__header"
+                    style="
+                        margin-left: var(--pf-c-modal-box--c-button--sibling--MarginRight);
+                        margin-right: 0;
+                        text-align: start;
+                    "
+            >
+                <h1 class="pf-c-modal-box__title pf-m-icon" id="danger-alert-title">
+                    <span class="pf-c-modal-box__title-icon" style="color: var(--pf-global--danger-color--100)">
+                        <i class="fas fa-fw" aria-hidden="true"></i>
+                    </span>
+                    <span class="pf-c-modal-box__title-text"></span>
+                </h1>
+            </header>
+            <div class="pf-c-modal-box__body"></div>
+            <footer class="pf-c-modal-box__footer">
+                <div id="errorDetails" class="pf-c-accordion" style="width: 100%" hidden>
+                    <h3>
+                        <button class="pf-c-accordion__toggle" type="button" aria-expanded="false">
+                            <span class="pf-c-accordion__toggle-text">פרטים נוספים</span>
+                            <span class="pf-c-accordion__toggle-icon">
+                                <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+                          </span>
+                        </button>
+                    </h3>
+                    <div id="errorDetailsContent" class="pf-c-accordion__expanded-content" hidden>
+                        <div
+                                class="pf-c-alert pf-m-danger pf-m-inline"
+                                aria-label="Inline danger alert"
+                        >
+                            <div class="pf-c-alert__icon">
+                                <i class="fas fa-fw fa-exclamation-circle" aria-hidden="true"></i>
+                            </div>
+                            <p class="pf-c-alert__title">
+                                Danger inline alert title
+                            </p>
+                            <div class="pf-c-alert__description">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

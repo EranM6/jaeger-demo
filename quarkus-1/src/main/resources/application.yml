@@ -1,0 +1,41 @@
+# GLOBAL
+quarkus:
+  application:
+    name: quarkus-1
+  http:
+    port: 8080
+  opentelemetry:
+    enabled: true
+    propagators:
+      - b3
+      - jaeger
+    tracer:
+      exporter:
+        otlp:
+          endpoint: http://${JAEGER_AGENT_HOST}:${JAEGER_AGENT_PORT}
+      include-static-resources: true
+      sampler:
+        parent-based: true
+  log:
+    level: INFO
+    console:
+      format: "%d{HH:mm:ss} %-5p traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+    category:
+      "org.hibernate":
+        level: DEBUG
+  mongodb:
+    tracing:
+      enabled: true
+    users:
+      connection-string: mongodb://mongodb:27017
+      database: user-info
+
+'%local':
+  quarkus:
+    application:
+      name: quarkus-1-local
+    mongodb:
+      users:
+        connection-string: mongodb://localhost:27018
+    http:
+      port: 8085

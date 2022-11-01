@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'io.quarkus'
+    id "org.siouan.frontend-jdk11" version "5.3.0"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-mutiny'
+    implementation 'io.quarkus:quarkus-mongodb-client'
+    implementation 'io.quarkus:quarkus-config-yaml'
+    implementation 'io.quarkus:quarkus-smallrye-health'
+    implementation "io.quarkus:quarkus-smallrye-openapi"
+    implementation "io.quarkus:quarkus-elytron-security-properties-file"
+    implementation "io.quarkus:quarkus-resteasy-reactive-qute"
+//    implementation "io.quarkus:quarkus-rest-client"
+    implementation "io.quarkus:quarkus-resteasy-reactive-jackson"
+    implementation 'io.quarkus:quarkus-arc'
+    implementation "io.quarkus:quarkus-opentelemetry"
+    implementation "io.quarkus:quarkus-opentelemetry-exporter-otlp"
+    implementation "io.opentelemetry:opentelemetry-extension-trace-propagators"
+    implementation "io.opentelemetry:opentelemetry-extension-annotations"
+    implementation group: 'org.wso2.apache.httpcomponents', name: 'httpclient', version: '4.3.1.wso2v1'
+    implementation 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+    implementation 'commons-codec:commons-codec:1.15'
+    implementation 'commons-net:commons-net:3.8.0'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'io.quarkus:quarkus-junit5'
+}
+
+group 'com.haaretz'
+version '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+quarkusBuild {
+    nativeArgs {
+        containerBuild = true
+        buildImage = "quay.io/quarkus/ubi-quarkus-native-image:21.2.0-java11"
+    }
+}

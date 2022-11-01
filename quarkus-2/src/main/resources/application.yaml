@@ -1,0 +1,50 @@
+# GLOBAL
+quarkus:
+  application:
+    name: quarkus-2
+  http:
+    port: 8080
+  opentelemetry:
+    enabled: true
+    tracer:
+      sampler:
+        parent-based: true
+      include-static-resources: true
+      exporter:
+        otlp:
+          endpoint: http://${JAEGER_AGENT_HOST}:${JAEGER_AGENT_PORT}
+    propagators:
+      - b3
+      - jaeger
+  rest-client:
+    users:
+      url: http://users:8080
+      scope: javax.inject.Singleton
+    animals:
+      url: http://animal:9000
+      scope: javax.inject.Singleton
+    scientists:
+      url: http://scientist:8090
+      scope: javax.inject.Singleton
+  log:
+    level: INFO
+    console:
+      format: "%d{HH:mm:ss} %-5p traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+    category:
+      "org.hibernate":
+        level: DEBUG
+
+'%local':
+  quarkus:
+    application:
+      name: quarkus-2-local
+    http:
+      port: 8095
+    rest-client:
+      users:
+        url: http://localhost:8085
+      animals:
+        url: http://localhost:9000
+      scientists:
+        url: http://localhost:8090
+

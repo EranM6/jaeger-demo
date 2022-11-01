@@ -1,0 +1,121 @@
+<div id="universityInfo" style="text-align: start" hidden>
+    <div class="pf-c-card__header">
+        <h2 id="userId" class="pf-c-title pf-m-lg"></h2>
+    </div>
+    <div class="pf-c-card__body">
+        <div class="pf-c-card__title pf-l-flex pf-m-justify-content-space-between">
+            <span class="pf-l-flex__item" style="margin-right: 0">פרטים</span>
+            <button id="editButt" class="pf-c-button pf-m-primary pf-m-small pf-l-flex__item" type="button">עריכת פרטים</button>
+        </div>
+        <div class="pf-l-grid pf-m-all-6-col-on-sm pf-m-all-4-col-on-lg pf-m-gutter">
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>שם ארגון:</span>
+                        <span id="name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>שם לתצוגה:</span>
+                        <span id="displayName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>תיאור:</span>
+                        <span id="description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="pf-c-divider"/>
+    <div class="pf-c-card__body">
+        <div class="pf-c-card__title pf-l-flex pf-m-justify-content-space-between">
+            <span class="pf-l-flex__item" style="margin-right: 0">פרטי איש קשר</span>
+        </div>
+        <div class="pf-l-grid pf-m-all-6-col-on-sm pf-m-all-4-col-on-lg pf-m-gutter">
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>שם:</span>
+                        <span id="contactName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>דוא"ל:</span>
+                        <span id="contactMail"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>טלפון:</span>
+                        <span id="contactPhone"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-l-grid__item pf-m-12-col">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>תיאור:</span>
+                        <span id="contactDescription"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="pf-c-divider"/>
+    <div class="pf-c-card__body">
+        <div class="pf-c-card__title pf-l-flex pf-m-justify-content-space-between">
+            <span class="pf-l-flex__item" style="margin-right: 0">פרטי מינוי</span>
+        </div>
+        <div class="pf-l-grid pf-m-all-6-col-on-sm pf-m-all-4-col-on-lg pf-m-gutter">
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <i id="isHtz" class="fas fa-check-circle pf-u-success-color-100" aria-hidden="true"></i>
+                        <span>הארץ</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <i id="isTm" class="fas fa-check-circle pf-u-success-color-100" aria-hidden="true"></i>
+                        <span>TheMarker</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pf-l-grid__item">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <i id="isHdc" class="fas fa-check-circle pf-u-success-color-100" aria-hidden="true"></i>
+                        <span>Haaretz.com</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pf-l-grid__item pf-m-12-col">
+                <div class="pf-l-flex pf-m-space-items-sm">
+                    <div class="pf-l-flex__item">
+                        <span>טווחים:</span>
+                        <span id="ipRanges"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#include components/universityForm /}

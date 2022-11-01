@@ -1,0 +1,20 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: animal(spring)
+
+  sleuth:
+    otel:
+      exporter:
+        otlp:
+          endpoint: http://${JAEGER_AGENT_HOST}:${JAEGER_AGENT_PORT}
+      config:
+        trace-id-ratio-based: 1.0
+    sampler:
+      probability: 1.0
+    propagation:
+      type:
+        - b3
+        - jaeger

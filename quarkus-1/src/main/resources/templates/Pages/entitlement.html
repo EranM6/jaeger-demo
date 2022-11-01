@@ -1,0 +1,127 @@
+{#include layouts/pageWrapper}
+    {#title}Home{/title}
+    <section id="sendEntitlement" class="pf-c-page__main-section pf-m-limit-width pf-m-align-center">
+          <div class="pf-c-page__main-body">
+              <h1 class="pf-c-title pf-m-3xl pf-l-flex pf-m-justify-content-center">
+                  <span class="pf-l-flex__item">
+                      שליחת מייל זכאות
+                  </span>
+              </h1>
+              <div class="pf-l-bullseye">
+                  <form novalidate class="pf-c-form" id="send-form" style="text-align: start">
+                      <div class="pf-l-grid pf-m-gutter">
+                          <div class="pf-c-form__group pf-l-grid__item pf-m-8-col" id="send-form-email">
+                              <div class="pf-c-form__group-label">
+                                  <label class="pf-c-form__label" for="send-form-email-input">
+                                      <span class="pf-c-form__label-text">דוא"ל</span>
+                                      <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+                                  </label>
+                              </div>
+                              <div class="pf-c-form__group-control">
+                                  <input
+                                          class="pf-c-form-control"
+                                          type="text"
+                                          id="send-form-email-input"
+                                          name="send-form-email-input"
+                                          required
+                                  />
+                                  <p
+                                          class="pf-c-form__helper-text pf-m-error"
+                                          id="form-help-text-email"
+                                          aria-live="polite"
+                                  ></p>
+                              </div>
+                          </div>
+                          <div class="pf-c-form__group pf-l-grid__item pf-m-4-col" id="send-form-subs-no">
+                              <div class="pf-c-form__group-label">
+                                  <label class="pf-c-form__label" for="send-form-subs-no-input">
+                                      <span class="pf-c-form__label-text">מס' מינוי</span>
+                                      <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+                                  </label>
+                              </div>
+                              <div class="pf-c-form__group-control">
+                                  <input
+                                          class="pf-c-form-control"
+                                          type="text"
+                                          id="send-form-subs-no-input"
+                                          name="send-form-subs-no-input"
+                                          required
+                                  />
+                                  <p
+                                          class="pf-c-form__helper-text pf-m-error"
+                                          id="form-help-text-subsNo"
+                                          aria-live="polite"
+                                  ></p>
+                              </div>
+                          </div>
+                          <button
+                                  id="sendEntitlementButt"
+                                  class="pf-c-button pf-m-primary"
+                                  type="button"
+                                  form="send-form"
+                                  disabled
+                          >שלח
+                          </button>
+                      </div>
+                  </form>
+              </div>
+        </div>
+    </section>
+    <div class="pf-c-divider pf-m-inset-md" role="separator"></div>
+    <section id="checkEntitlement" class="pf-c-page__main-section pf-m-limit-width pf-m-align-center">
+        <div class="pf-c-page__main-body">
+            <h1 class="pf-c-title pf-m-3xl pf-l-flex pf-m-justify-content-center">
+                  <span class="pf-l-flex__item">
+                      בדיקת זכאות
+                  </span>
+            </h1>
+            <div class="pf-l-bullseye">
+                <form novalidate class="pf-c-form" id="check-form" style="text-align: start">
+                    <div class="pf-l-grid pf-m-gutter">
+                        <div class="pf-c-form__group pf-l-grid__item pf-m-6-col" id="send-form-subs-no">
+                            <div class="pf-c-form__group-label">
+                                <label class="pf-c-form__label" for="check-form-subs-no-input">
+                                    <span class="pf-c-form__label-text">מס' מינוי</span>
+                                    <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+                                </label>
+                            </div>
+                            <div class="pf-c-form__group-control">
+                                <input
+                                        class="pf-c-form-control"
+                                        type="text"
+                                        id="check-form-subs-no-input"
+                                        name="check-form-subs-no-input"
+                                        required
+                                />
+                                <p
+                                        class="pf-c-form__helper-text pf-m-error"
+                                        id="form-help-text-subsNo"
+                                        aria-live="polite"
+                                ></p>
+                            </div>
+                        </div>
+                        <div class="pf-c-form__group pf-l-grid__item pf-m-6-col" id="send-form-submit">
+                            <div class="pf-c-form__group-label"></div>
+                            <div class="pf-c-form__group-control">
+                                <button
+                                        id="checkEntitlementButt"
+                                        class="pf-c-button pf-m-link pf-m-display-lg"
+                                        type="button"
+                                        form="send-form"
+                                        disabled
+                                >
+                                    שלח
+                                    <span class="pf-c-button__icon pf-m-start">
+                                        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                                      </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+        <script type="module" src="js/sendEntitlement.js"></script>
+        <script type="module" src="js/checkEntitlement.js"></script>
+{/include}
