@@ -34,8 +34,8 @@ public class Controller {
     }
 
     @GetMapping(path = "/user")
-    public String user(String id) throws Exception {
-        String user = userClient.getUser(id);
+    public String user() throws Exception {
+        String user = userClient.getUser();
         return user;
     }
 

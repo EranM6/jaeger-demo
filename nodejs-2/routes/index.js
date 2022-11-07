@@ -1,6 +1,6 @@
 const express = require('express');
 const opentelemetry = require('@opentelemetry/api');
-const {getUser} = require("../mongoDb/model");
+const {getRandom} = require("../mongoDb/model");
 const {logger} = require("../utils/logger");
 const router = express.Router();
 const axios = require("axios");
@@ -21,7 +21,7 @@ router.get('/getUser', function (req, res, next) {
     parallel({
         user: callback => {
             axios
-                .get(`http://${uris.users}/api/v1/names/user?id=570`)
+                .get(`http://${uris.users}/api/v1/names/user`)
                 .then(({data}) => {
                     callback(null, data)
                 })
@@ -39,7 +39,7 @@ router.get('/getUser', function (req, res, next) {
                     callback(error)
                 });
         },
-        fromMongo: callback => getUser("570", callback)
+        fromMongo: callback => getRandom(callback)
     }, (err, data) => {
         if (err) {
             logger.error(err)

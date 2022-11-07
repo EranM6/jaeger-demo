@@ -8,12 +8,12 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@Path("/api/searchUser")
+@Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @RegisterRestClient(configKey="users")
 public interface UserService {
     @GET
-    @Path("/random")
+    @Path("/getRandomUser")
     String getRandom();
 
     @GET

@@ -1,10 +1,6 @@
 package com.haaretz.mongodb;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -53,6 +49,11 @@ public abstract class MongoDb<T extends MongoResponse> implements HealthCheck {
 
     public T getItemById(Object id) {
         return getItem(new Document("_id", id));
+    }
+    public T getRandomDoc() {
+        List<Bson> pipeline = List.of(new Document("$sample", new Document("size", 1)));
+
+        return getCollection().aggregate(pipeline).first();
     }
 
     protected Set<T> search(Document query, Document projection, Document sort, int limit) {

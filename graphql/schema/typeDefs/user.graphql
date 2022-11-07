@@ -1,0 +1,123 @@
+type MobilePhone {
+    phonePrefix: Int
+    phoneSuffix: Int
+    userMobile: String
+}
+
+enum Status { SUBSCRIBED FROZEN STOPPED }
+enum Site { HTZ TM HDC }
+
+type FrozenPrint {
+    freezeStatus: Boolean
+    toDate: Date
+}
+
+type Product {
+    prodNum: Int
+    brand: String
+    statusInt: Int
+    status: Status
+    isTrial: Boolean
+    startDate: Date
+    endDate: Date
+    debtActive: Boolean
+    debtAmount: Float
+    cardExpiration: Boolean
+    futureEndDate: Date
+    isFinishStageDate: Boolean
+    endReasonCode: Int
+    frozenPrint: FrozenPrint
+    saleCode: Int
+    promotionNum: Int
+    proposalType: Int
+    connectionType: Int
+    payersSon: Boolean
+    proposalPeriod: Int
+    finishStageDate: Date,
+    payProp: Int
+    comboCode: Int
+    abuse: [AnonymousId]
+}
+
+type AnonymousId {
+    anonymousId: String
+    updateDate: Date
+}
+
+type TermsAgreement {
+    HTZ: Boolean
+    TM: Boolean
+    HDC: Boolean
+}
+
+type TermsAgreementDates {
+    HTZ: Date
+    TM: Date
+    HDC: Date
+}
+
+type GDPR {
+    brand: String
+    cookieConsentType: String
+    cookieConsentDate: Date
+}
+
+type SpecialOffer {
+    specialOffer: String
+    specialOfferDate: Date
+}
+
+type UserStatus {
+    isMailValidated: Boolean
+    isMobileValidated: Boolean
+    miniRegStatus: Boolean
+    isPhoneEmailConn: Boolean
+    termsAgreement: TermsAgreement
+}
+
+type UserLogin {
+    _id: String
+    mobilePhone: String
+    isPaying(site: Site): Boolean
+    termsCheck(site: Site): Boolean
+    userStatus: UserStatus
+}
+
+type UserAmp {
+    _id: String
+}
+
+type User {
+    _id: String
+    uIl: Int
+    password: String
+    firstName: String
+    lastName: String
+    userMail: String
+    updateDate: Date
+    ticket: String
+    ticketExpiration: Date
+    antiAbuseToken: String
+    isAbuser: Boolean
+    mobilePhone: MobilePhone
+    mobileNumber: String
+    registerBrand: Site
+    registerDate: Date
+    registerOrigin: String
+    miniRegStatus: Boolean
+    isPhoneEmailConn: Boolean
+    mailValidationDate: Date
+    mobileValidationDate: Date
+    termsAgreement: TermsAgreementDates
+    GDPR: [GDPR]
+    specialOffers: [SpecialOffer]
+    subsNo: Int
+    products: [Product]
+    readerId: [String]
+    isAdvisor: Boolean
+    userStatus: UserStatus
+    isPaying(site: Site): Boolean
+    termsCheck(site: Site): Boolean
+    isConsultant: Boolean
+    isNeedNewPassword: Boolean
+}

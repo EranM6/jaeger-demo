@@ -18,8 +18,8 @@ public class UserClient {
         this.baseUrl = baseUrl;
     }
 
-    String getUser(@RequestParam("query") String id) {
-        String url = String.format("%s/api/user?id=%s", baseUrl, id);
+    String getUser() {
+        String url = String.format("%s/api/randomUser", baseUrl);
         return restTemplate.getForObject(url, String.class);
     }
 
