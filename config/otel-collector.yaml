@@ -3,6 +3,16 @@ receivers:
     protocols:
       grpc:
         endpoint: collector:4317
+      http:
+        include_metadata: true
+        cors:
+          allowed_origins:
+            - http://localhost:3000
+            - http://localhost:8080
+            - http://localhost
+          allowed_headers:
+            - Example-Header
+          max_age: 7200
 
 exporters:
   jaeger:

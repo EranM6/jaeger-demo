@@ -76,11 +76,26 @@ services:
             context: ./nodejs-2
             dockerfile: ../Dockerfile-node
         image: node2:latest
+        expose:
+            - "3000"
+        restart: unless-stopped
+        environment:
+            - MONGO_CONN_STRING=mongodb://mongodb:27017
+            - JAEGER_AGENT_HOST=jaeger
+            - JAEGER_AGENT_PORT=4318
+            - PROFILE=prod
+        networks:
+            - jaeger-example
+    graphql:
+        container_name: graphql
+        build:
+            context: ./graphql
+            dockerfile: ../Dockerfile-node
+        image: graphql:latest
         ports:
             - "8080:3000"
         restart: unless-stopped
         environment:
-            - MONGO_CONN_STRING=mongodb://mongodb:27017
             - JAEGER_AGENT_HOST=jaeger
             - JAEGER_AGENT_PORT=4318
             - PROFILE=prod
@@ -103,6 +118,7 @@ services:
         environment:
             - COLLECTOR_ZIPKIN_HOST_PORT=:9411
             - COLLECTOR_OTLP_ENABLED=true
+            - JAEGER_DISABLED=true
         networks:
             - jaeger-example
     otel-collector:

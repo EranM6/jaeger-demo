@@ -10,12 +10,9 @@ const {CompositePropagator} = require('@opentelemetry/core');
 const {B3Propagator, B3InjectEncoding} = require('@opentelemetry/propagator-b3');
 const {JaegerPropagator} = require('@opentelemetry/propagator-jaeger');
 const {diag, DiagConsoleLogger, DiagLogLevel} = require('@opentelemetry/api');
-const {PinoInstrumentation} = require('@opentelemetry/instrumentation-pino');
-const {MongoDBInstrumentation} = require('@opentelemetry/instrumentation-mongodb');
-const {MongooseInstrumentation} = require('@opentelemetry/instrumentation-mongoose');
+const {GraphQLInstrumentation} = require("@opentelemetry/instrumentation-graphql")
 const {HttpInstrumentation} = require("@opentelemetry/instrumentation-http")
-
-const tracer = opentelemetryApi.trace.getTracer('http-example');
+const {PinoInstrumentation} = require('@opentelemetry/instrumentation-pino');
 
 module.exports = {
     init() {
@@ -25,7 +22,7 @@ module.exports = {
 
         const provider = new NodeTracerProvider({
             resource: new Resource({
-                [SemanticResourceAttributes.SERVICE_NAME]: "nodejs service 2",
+                [SemanticResourceAttributes.SERVICE_NAME]: "graphql",
             }),
         });
 
@@ -56,35 +53,10 @@ module.exports = {
         registerInstrumentations({
             // instrumentations: [getNodeAutoInstrumentations()]
             instrumentations: [
-                new PinoInstrumentation(),
-                new MongoDBInstrumentation(),
-                new MongooseInstrumentation(),
-                new HttpInstrumentation()
+                new GraphQLInstrumentation(),
+                new HttpInstrumentation(),
+                new PinoInstrumentation()
             ]
         });
-    },
-    traceRequest(request, response, next) {
-        const {logger} = require("./logger");
-        const currentSpan = opentelemetryApi.trace.getSpan(opentelemetryApi.context.active());
-        // display traceid in the terminal
-        logger.debug(`traceid: ${currentSpan.spanContext().traceId}`);
-        const span = tracer.startSpan('handleRequest', {
-            kind: 1, // server
-            attributes: {key: 'value'},
-        });
-        // Annotate our span to capture metadata about the operation
-        span.addEvent('invoking handleRequest');
-
-        const body = [];
-        request.on('error', (err) => logger.error(err));
-        request.on('data', (chunk) => body.push(chunk));
-        request.on('end', () => {
-            // deliberately sleeping to mock some action.
-            setTimeout(() => {
-                span.end();
-                response.end('Hello World!');
-            }, 2000);
-        });
-        next();
     }
 }
